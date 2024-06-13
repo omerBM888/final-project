@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peter Griffin Dance</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #770000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        button:hover {
+            background-color: #770000;
+        }
+        
+        img {
+            width: 300px;
+            height: 300px;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        #score {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="image1" src="peter1.jpg" alt="Peter Griffin 1">
+        <img id="image2" src="peter2.png" alt="Peter Griffin 2" style="display: none;">
+        <img id="image3" src="peter3.jpg" alt="Peter Griffin 3" style="display: none;">
+        <button onclick="swapImages()">Dance!</button>
+        <div id="score">Score: <span id="points">0</span></div>
+    </div>
+
+    <script>
+        let score = 0;
+
+        function swapImages() {
+            const image1 = document.getElementById('image1');
+            const image2 = document.getElementById('image2');
+            const image3 = document.getElementById('image3');
+            const pointsDisplay = document.getElementById('points');
+
+            if (score >= 3000) {
+                image1.style.display = "none";
+                image2.style.display = "none";
+                image3.style.display = "inline-block";
+                pointsDisplay.textContent = "You clicked the button too many times! Go touch some grass.";
+            } else {
+                image1.style.display = image1.style.display === "none" ? "inline-block" : "none";
+                image2.style.display = image2.style.display === "none" ? "inline-block" : "none";
+                score += 50;
+                pointsDisplay.textContent = score;
+            }
+        }
+    </script>
+</body>
+</html>
